@@ -1,0 +1,658 @@
+@layer scalar-base, scalar-theme, scalar-config, theme, base, components, utilities;
+
+@import "tailwindcss" source("../");
+@import "@xyflow/react/dist/style.css";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --font-sans:
+    "Inter", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", sans-serif;
+  --font-mono:
+    "JetBrains Mono", "SF Mono", ui-monospace, "Cascadia Code", monospace;
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--surface-muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  --color-sidebar: var(--sidebar-bg);
+  --color-sidebar-foreground: var(--foreground);
+  --color-sidebar-primary: var(--primary);
+  --color-sidebar-primary-foreground: var(--primary-foreground);
+  --color-sidebar-accent: var(--accent);
+  --color-sidebar-accent-foreground: var(--accent-foreground);
+  --color-sidebar-border: var(--border);
+  --color-sidebar-ring: var(--ring);
+
+  --color-app-bg: var(--bg);
+  --color-app-canvas: var(--canvas);
+  --color-app-surface: var(--surface);
+  --color-app-surface-strong: var(--surface-strong);
+  --color-app-surface-muted: var(--surface-muted);
+  --color-app-surface-raised: var(--surface-raised);
+  --color-app-sidebar-bg: var(--sidebar-bg);
+  --color-app-hover: var(--hover);
+  --color-app-active: var(--active);
+  --color-app-selected: var(--selected);
+  --color-app-border: var(--border);
+  --color-app-border-strong: var(--border-strong);
+  --color-app-border-faint: var(--border-faint);
+  --color-app-text: var(--text);
+  --color-app-text-secondary: var(--text-secondary);
+  --color-app-muted: var(--muted);
+  --color-app-text-muted: var(--text-muted);
+  --color-app-faint: var(--faint);
+  --color-app-text-faint: var(--text-faint);
+  --color-app-primary: var(--primary);
+  --color-app-primary-hover: var(--primary-hover);
+  --color-app-primary-bg: var(--primary-bg);
+  --color-app-primary-border: var(--primary-border);
+  --color-app-primary-fg: var(--primary-fg);
+  --color-app-success: var(--success);
+  --color-app-success-bg: var(--success-bg);
+  --color-app-success-border: var(--success-border);
+  --color-app-warning: var(--warning);
+  --color-app-warning-bg: var(--warning-bg);
+  --color-app-warning-border: var(--warning-border);
+  --color-app-danger: var(--danger);
+  --color-app-danger-bg: var(--danger-bg);
+  --color-app-danger-border: var(--danger-border);
+  --color-app-info: var(--info);
+  --color-app-info-bg: var(--info-bg);
+  --color-app-info-border: var(--info-border);
+  --color-finding-critical: var(--finding-critical);
+  --color-finding-critical-bg: var(--finding-critical-bg);
+  --color-finding-high: var(--finding-high);
+  --color-finding-high-bg: var(--finding-high-bg);
+  --color-finding-medium: var(--finding-medium);
+  --color-finding-medium-bg: var(--finding-medium-bg);
+  --color-finding-low: var(--finding-low);
+  --color-finding-low-bg: var(--finding-low-bg);
+  --color-finding-info: var(--finding-info);
+  --color-finding-info-bg: var(--finding-info-bg);
+
+  --radius-app-sm: var(--radius-sm);
+  --radius-app: var(--radius);
+  --radius-app-lg: var(--radius-lg);
+  --radius-xs: calc(var(--radius) * 0.5);
+  --radius-md: calc(var(--radius) * 0.875);
+  --radius-xl: calc(var(--radius) * 1.5);
+
+  --shadow-app: var(--shadow);
+  --shadow-app-strong: var(--shadow-strong);
+  --shadow-app-overlay: var(--shadow-overlay);
+
+  --text-label: var(--label-size);
+  --text-label--line-height: 16px;
+  --text-label--font-weight: 500;
+}
+
+:root {
+  color-scheme: light;
+
+  /* Surfaces — Notion warm neutrals */
+  --bg: #fbfbfa;
+  --canvas: #fbfbfa;
+  --surface: #ffffff;
+  --surface-strong: #f7f7f5;
+  --surface-muted: #f7f7f5;
+  --surface-raised: #ffffff;
+  --sidebar-bg: #fbfbfa;
+
+  /* Interactive states */
+  --hover: rgba(55, 53, 47, 0.04);
+  --active: rgba(55, 53, 47, 0.08);
+  --selected: rgba(91, 91, 214, 0.08);
+
+  /* Borders */
+  --border: rgba(55, 53, 47, 0.1);
+  --border-strong: rgba(55, 53, 47, 0.16);
+  --border-faint: rgba(55, 53, 47, 0.06);
+
+  /* Text */
+  --text: #37352f;
+  --text-secondary: #6b6a63;
+  --muted: #9b9a93;
+  --text-muted: #9b9a93;
+  --faint: #c4c3bc;
+  --text-faint: #c4c3bc;
+
+  /* Primary accent — Linear violet */
+  --primary: #5b5bd6;
+  --primary-hover: #4a4ac8;
+  --primary-bg: rgba(91, 91, 214, 0.08);
+  --primary-border: rgba(91, 91, 214, 0.24);
+  --primary-fg: #ffffff;
+
+  /* shadcn/ui tokens mapped to the app design system */
+  --background: var(--bg);
+  --foreground: var(--text);
+  --card: var(--surface);
+  --card-foreground: var(--text);
+  --popover: var(--surface-raised);
+  --popover-foreground: var(--text);
+  --primary-foreground: var(--primary-fg);
+  --secondary: var(--surface-muted);
+  --secondary-foreground: var(--text);
+  --muted-foreground: var(--text-muted);
+  --accent: var(--selected);
+  --accent-foreground: var(--primary);
+  --destructive: var(--danger);
+  --destructive-foreground: #ffffff;
+  --input: var(--border);
+  --ring: var(--primary);
+
+  /* Semantic — low saturation */
+  --success: #4f7a3e;
+  --success-bg: rgba(79, 122, 62, 0.08);
+  --success-border: rgba(79, 122, 62, 0.18);
+  --warning: #a8740c;
+  --warning-bg: rgba(168, 116, 12, 0.08);
+  --warning-border: rgba(168, 116, 12, 0.18);
+  --danger: #c0413b;
+  --danger-bg: rgba(192, 65, 59, 0.07);
+  --danger-border: rgba(192, 65, 59, 0.2);
+  --info: #3a6cb5;
+  --info-bg: rgba(58, 108, 181, 0.07);
+  --info-border: rgba(58, 108, 181, 0.18);
+
+  /* Finding severity */
+  --finding-critical: #8b245d;
+  --finding-critical-bg: rgba(139, 36, 93, 0.12);
+  --finding-high: #c0413b;
+  --finding-high-bg: rgba(192, 65, 59, 0.07);
+  --finding-medium: #a8740c;
+  --finding-medium-bg: rgba(168, 116, 12, 0.08);
+  --finding-low: #4f7a3e;
+  --finding-low-bg: rgba(79, 122, 62, 0.08);
+  --finding-info: #3a6cb5;
+  --finding-info-bg: rgba(58, 108, 181, 0.07);
+
+  /* Shadows */
+  --shadow: 0 1px 2px rgba(15, 15, 15, 0.04), 0 1px 1px rgba(15, 15, 15, 0.03);
+  --shadow-strong:
+    0 4px 12px rgba(15, 15, 15, 0.08), 0 1px 3px rgba(15, 15, 15, 0.06);
+  --shadow-overlay:
+    0 12px 32px rgba(15, 15, 15, 0.12), 0 4px 8px rgba(15, 15, 15, 0.08);
+
+  /* Radii */
+  --radius-sm: 4px;
+  --radius: 6px;
+  --radius-lg: 8px;
+
+  /* Typography */
+  --sans:
+    "Inter", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", sans-serif;
+  --mono: "JetBrains Mono", "SF Mono", ui-monospace, "Cascadia Code", monospace;
+
+  /* Density */
+  --row-h-sm: 32px;
+  --row-h: 36px;
+  --row-h-lg: 44px;
+  --label-size: 11px;
+  --label-weight: 500;
+  --header-h: 56px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--sans);
+  font-size: 13px;
+  line-height: 1.5;
+  font-feature-settings: "cv11", "ss03", "ss01";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow: hidden;
+}
+
+button,
+input,
+select,
+textarea {
+  font-family: inherit;
+}
+
+button,
+a,
+select,
+input::file-selector-button {
+  transition:
+    background-color 140ms ease,
+    border-color 140ms ease,
+    box-shadow 140ms ease,
+    color 140ms ease;
+}
+
+@layer base {
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+}
+
+.app-breadcrumb-link:hover {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}
+
+.visuallyHidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  border: 0;
+  padding: 0;
+  opacity: 0;
+  appearance: none;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+/* Markdown prose — used by <Markdown> component */
+.prose {
+  color: var(--text);
+  font-size: 13px;
+  line-height: 1.55;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+.prose > :first-child {
+  margin-top: 0;
+}
+
+.prose > :last-child {
+  margin-bottom: 0;
+}
+
+.prose p,
+.prose ul,
+.prose ol,
+.prose pre,
+.prose table,
+.prose blockquote {
+  margin: 8px 0;
+}
+
+.prose h1,
+.prose h2,
+.prose h3,
+.prose h4 {
+  margin: 12px 0 6px;
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.prose h1 {
+  font-size: 16px;
+}
+.prose h2 {
+  font-size: 15px;
+}
+.prose h3 {
+  font-size: 14px;
+}
+.prose h4 {
+  font-size: 13px;
+}
+
+.prose ul,
+.prose ol {
+  padding-left: 20px;
+}
+
+.prose li {
+  margin: 2px 0;
+}
+
+.prose code {
+  border-radius: var(--radius-sm);
+  padding: 1px 5px;
+  background: var(--surface-muted);
+  color: var(--text);
+  font-family: var(--mono);
+  font-size: 12px;
+  white-space: break-spaces;
+}
+
+.prose pre {
+  overflow: auto;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 10px 12px;
+  background: var(--surface-muted);
+  font-size: 12px;
+}
+
+.prose pre code {
+  padding: 0;
+  background: transparent;
+  white-space: pre;
+}
+
+.shiki-code-viewer {
+  --code-line-number-width: 5ch;
+  --code-line-height: 18px;
+
+  color: var(--text);
+  font-family: Menlo, Monaco, Consolas, "SF Mono", "Cascadia Code", monospace;
+  font-size: 13px;
+  line-height: var(--code-line-height);
+}
+
+.shiki-code-viewer .shiki {
+  min-height: 100%;
+  min-width: max-content;
+  margin: 0;
+  padding: 0;
+  background: transparent !important;
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  tab-size: 4;
+}
+
+.shiki-code-viewer .shiki code {
+  display: block;
+  min-width: max-content;
+  counter-reset: code-line;
+}
+
+.shiki-code-viewer .line {
+  display: block;
+  width: fit-content;
+  min-width: 100%;
+  height: var(--code-line-height);
+  padding-right: 24px;
+  line-height: var(--code-line-height);
+  transition: background-color 120ms ease;
+}
+
+.shiki-code-viewer .line::before {
+  position: sticky;
+  left: 0;
+  display: inline-block;
+  width: var(--code-line-number-width);
+  height: var(--code-line-height);
+  margin-right: 16px;
+  padding: 0 8px 0 12px;
+  background: var(--background);
+  color: var(--text-faint);
+  content: counter(code-line);
+  counter-increment: code-line;
+  font-variant-numeric: tabular-nums;
+  line-height: var(--code-line-height);
+  text-align: right;
+  vertical-align: top;
+  user-select: none;
+}
+
+.shiki-code-viewer .line:hover {
+  background: var(--hover);
+}
+
+.shiki-code-viewer .line:hover::before {
+  background: var(--hover);
+  color: var(--text-secondary);
+}
+
+.prose a {
+  color: var(--primary);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.prose a:hover {
+  color: var(--primary-hover);
+}
+
+.prose table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 12px;
+  table-layout: fixed;
+}
+
+.prose th,
+.prose td {
+  border: 1px solid var(--border);
+  padding: 6px 8px;
+  text-align: left;
+  vertical-align: top;
+}
+
+.prose th {
+  background: var(--surface-muted);
+  font-weight: 600;
+}
+
+.prose blockquote {
+  border-left: 2px solid var(--border-strong);
+  padding-left: 12px;
+  color: var(--text-secondary);
+}
+
+.prose hr {
+  margin: 16px 0;
+  border: 0;
+  border-top: 1px solid var(--border);
+}
+
+.prose img {
+  max-width: 100%;
+  border-radius: var(--radius);
+}
+
+.prose * {
+  max-width: 100%;
+}
+
+/* Custom scrollbars (Linear-style thin) */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--border-strong) transparent;
+}
+
+*::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+*::-webkit-scrollbar-thumb {
+  border-radius: 999px;
+  background: var(--border-strong);
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background: var(--text-faint);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ---- Navigation progress bar (top of page) ---- */
+.nav-progress {
+  position: fixed;
+  inset-block-start: 0;
+  inset-inline: 0;
+  z-index: 200;
+  height: 2px;
+  pointer-events: none;
+  background: transparent;
+  opacity: 0;
+  transition: opacity 180ms ease;
+}
+
+.nav-progress[data-state="loading"] {
+  opacity: 1;
+}
+
+.nav-progress__bar {
+  height: 100%;
+  width: 36%;
+  background: var(--primary);
+  box-shadow: 0 0 8px var(--primary);
+  transform-origin: left center;
+}
+
+.nav-progress[data-state="loading"] .nav-progress__bar {
+  animation: nav-progress-indeterminate 1.6s cubic-bezier(0.4, 0, 0.2, 1)
+    infinite;
+}
+
+.nav-progress[data-state="completing"] .nav-progress__bar {
+  width: 100%;
+  animation: none;
+  transition: width 220ms ease-out;
+}
+
+@keyframes nav-progress-indeterminate {
+  0% {
+    transform: translateX(-110%) scaleX(0.45);
+  }
+  50% {
+    transform: translateX(90%) scaleX(1);
+  }
+  100% {
+    transform: translateX(310%) scaleX(0.45);
+  }
+}
+
+/* ---- Fade-in for cards / sections ---- */
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in-up {
+  animation: fade-in-up 200ms ease-out both;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.fade-in {
+  animation: fade-in 200ms ease-out both;
+}
+
+/* ---- Skeleton shimmer ---- */
+@keyframes skeleton-shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.skeleton {
+  background: linear-gradient(
+    90deg,
+    var(--surface-muted) 0%,
+    var(--surface-strong) 50%,
+    var(--surface-muted) 100%
+  );
+  background-size: 200% 100%;
+  animation: skeleton-shimmer 1.6s ease-in-out infinite;
+  border-radius: var(--radius-sm);
+  min-height: 12px;
+}
+
+/* ---- Spinner ---- */
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-spin {
+  animation: spin 0.8s linear infinite;
+}
+
+/* ---- Pulse for "running" status dots, etc ---- */
+@keyframes soft-pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.55;
+  }
+}
+
+.animate-soft-pulse {
+  animation: soft-pulse 1.8s ease-in-out infinite;
+}
+
+/* ---- Better default text rendering ---- */
+@supports (font-variation-settings: normal) {
+  body {
+    font-feature-settings: "cv11", "ss03", "ss01";
+  }
+}
+
+/* Smooth scrolling for in-page anchors */
+html {
+  scroll-behavior: smooth;
+}

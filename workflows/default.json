@@ -1,0 +1,119 @@
+{
+  "name": "Default Audit",
+  "description": "Identify entrypoints and build a threat model, enumerate attack-surface hypotheses, construct code context, investigate security issues, verify false positives, and calibrate Finding severity.",
+  "stages": [
+    {
+      "name": "Entrypoint Analysis",
+      "dependsOn": [],
+      "threadMode": "new",
+      "turns": [
+        {
+          "name": "Entrypoint Analysis",
+          "skills": {
+            "names": ["tob-entry-point-analyzer"]
+          },
+          "prompt": [
+            "Goal: Use the `tob-entry-point-analyzer` skill to identify every external, state-changing production entrypoint.",
+            "Output: Write the results to `./entry-points.md`.",
+            "Constraints: Verify inheritance, access controls, and production reachability; cite exact paths and line numbers; exclude tests, mocks, examples, dead code, and read-only entrypoints."
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Threat Modeling",
+      "dependsOn": ["Entrypoint Analysis"],
+      "threadMode": "new",
+      "turns": [
+        {
+          "name": "Threat Modeling",
+          "skills": {
+            "names": ["openai-security-threat-model"]
+          },
+          "prompt": [
+            "Goal: Read `./entry-points.md`, then use the `openai-security-threat-model` skill to build an evidence-based threat model that prioritizes the audit.",
+            "Output: Write the results to `./threat-model.md`."
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Attack-Surface Hypotheses",
+      "dependsOn": ["Threat Modeling"],
+      "threadMode": "new",
+      "turns": [
+        {
+          "name": "Attack-Surface Hypotheses",
+          "goal": true,
+          "prompt": [
+            "Goal: Read `./entry-points.md` and `./threat-model.md`, and turn them into individually testable attack-surface hypotheses that guide the later audit stages.",
+            "Output: Write the results to `./attack-hypotheses.md`."
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Context Building",
+      "dependsOn": ["Attack-Surface Hypotheses"],
+      "threadMode": "new",
+      "turns": [
+        {
+          "name": "Context Building",
+          "goal": true,
+          "skills": {
+            "names": ["tob-audit-context-building"]
+          },
+          "prompt": [
+            "Goal: Read `./entry-points.md`, then use the `tob-audit-context-building` skill to read the code line by line and build complete execution paths and architectural context for every entrypoint.",
+            "Output: Write the results to `./context.md`."
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Security Issue Analysis",
+      "dependsOn": ["Context Building"],
+      "threadMode": "new",
+      "turns": [
+        {
+          "name": "Security Issue Analysis",
+          "goal": true,
+          "prompt": [
+            "Role: You are a senior security audit engineer.",
+            "Goal: Read `./entry-points.md`, `./threat-model.md`, `./attack-hypotheses.md`, and `./context.md`; test the attack hypotheses one by one, and investigate realistically triggerable security issues and compound attack chains along the execution paths.",
+            "Output: Write the results to `./findings.md`."
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Finding Review",
+      "dependsOn": ["Security Issue Analysis"],
+      "threadMode": "new",
+      "turns": [
+        {
+          "name": "False Positive Check",
+          "goal": true,
+          "skills": {
+            "names": ["fp-check"]
+          },
+          "prompt": [
+            "Goal: Read `./findings.md` and `./context.md`, then use the `fp-check` skill to independently verify every candidate and eliminate false positives.",
+            "Output: Modify `./findings.md` in place, appending a `TRUE POSITIVE` or `FALSE POSITIVE` verdict with rationale to every `CAND-*`."
+          ]
+        },
+        {
+          "name": "Finding Severity Calibration",
+          "skills": {
+            "names": ["finding-format-skill"]
+          },
+          "prompt": [
+            "Goal: Read `./findings.md`, then use the `finding-format-skill` skill to merge duplicate TRUE POSITIVEs, calibrate severity, and produce the final report.",
+            "Output: Modify `./findings.md` in place with the calibrated final Findings, then submit them via `finding.submit-confirmed`."
+          ],
+          "outputSchema": "finding.submit-confirmed"
+        }
+      ]
+    }
+  ]
+}

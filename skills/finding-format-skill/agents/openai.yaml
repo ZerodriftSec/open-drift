@@ -1,0 +1,4 @@
+interface:
+  display_name: "Finding Format Skill"
+  short_description: "Standardize security finding format and severity"
+  default_prompt: "Use $finding-format-skill to write security findings in the standard Markdown format with the required severity rubric."

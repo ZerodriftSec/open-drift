@@ -1,0 +1,1114 @@
+{
+  "version": "7",
+  "dialect": "sqlite",
+  "id": "c408be3d-d1c9-4413-a1b4-a29a8e5adc04",
+  "prevIds": [
+    "00000000-0000-0000-0000-000000000000"
+  ],
+  "ddl": [
+    {
+      "name": "AuditSession",
+      "entityType": "tables"
+    },
+    {
+      "name": "QueueSetting",
+      "entityType": "tables"
+    },
+    {
+      "name": "SessionFindingReview",
+      "entityType": "tables"
+    },
+    {
+      "name": "SessionFinding",
+      "entityType": "tables"
+    },
+    {
+      "name": "SessionGroupMember",
+      "entityType": "tables"
+    },
+    {
+      "name": "SessionGroup",
+      "entityType": "tables"
+    },
+    {
+      "name": "SessionQueueItem",
+      "entityType": "tables"
+    },
+    {
+      "name": "Upload",
+      "entityType": "tables"
+    },
+    {
+      "type": "text",
+      "notNull": false,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "id",
+      "entityType": "columns",
+      "table": "AuditSession"
+    },
+    {
+      "type": "text",
+      "notNull": true,
+      "autoincrement": false,
+      "default": "'[]'",
+      "generated": null,
+      "name": "agents",
+      "entityType": "columns",
+      "table": "AuditSession"
+    },
+    {
+      "type": "text",
+      "notNull": true,
+      "autoincrement": false,
+      "default": "'{\"stages\":[]}'",
+      "generated": null,
+      "name": "workflow",
+      "entityType": "columns",
+      "table": "AuditSession"
+    },
+    {
+      "type": "text",
+      "notNull": true,
+      "autoincrement": false,
+      "default": "'{\"mode\":\"idle\",\"status\":\"idle\",\"stages\":[],\"updatedAt\":\"\"}'",
+      "generated": null,
+      "name": "workflowState",
+      "entityType": "columns",
+      "table": "AuditSession"
+    },
+    {
+      "type": "text",
+      "notNull": true,
+      "autoincrement": false,
+      "default": "'main-audit'",
+      "generated": null,
+      "name": "workflowId",
+      "entityType": "columns",
+      "table": "AuditSession"
+    },
+    {
+      "type": "text",
+      "notNull": true,
+      "autoincrement": false,
+      "default": "'{}'",
+      "generated": null,
+      "name": "stageAgentAssignments",
+      "entityType": "columns",
+      "table": "AuditSession"
+    },
+    {
+      "type": "text",
+      "notNull": true,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "projectName",
+      "entityType": "columns",
+      "table": "AuditSession"
+    },
+    {
+      "type": "text",
+      "notNull": false,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "source",
+      "entityType": "columns",
+      "table": "AuditSession"
+    },
+    {
+      "type": "text",
+      "notNull": false,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "metadata",
+      "entityType": "columns",
+      "table": "AuditSession"
+    },
+    {
+      "type": "text",
+      "notNull": true,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "status",
+      "entityType": "columns",
+      "table": "AuditSession"
+    },
+    {
+      "type": "text",
+      "notNull": true,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "projectRoot",
+      "entityType": "columns",
+      "table": "AuditSession"
+    },
+    {
+      "type": "text",
+      "notNull": true,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "targetPath",
+      "entityType": "columns",
+      "table": "AuditSession"
+    },
+    {
+      "type": "text",
+      "notNull": false,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "workingDirectory",
+      "entityType": "columns",
+      "table": "AuditSession"
+    },
+    {
+      "type": "text",
+      "notNull": true,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "sessionDir",
+      "entityType": "columns",
+      "table": "AuditSession"
+    },
+    {
+      "type": "text",
+      "notNull": true,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "programLogFile",
+      "entityType": "columns",
+      "table": "AuditSession"
+    },
+    {
+      "type": "text",
+      "notNull": false,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "agentLogFile",
+      "entityType": "columns",
+      "table": "AuditSession"
+    },
+    {
+      "type": "text",
+      "notNull": true,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "createdAt",
+      "entityType": "columns",
+      "table": "AuditSession"
+    },
+    {
+      "type": "text",
+      "notNull": false,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "startedAt",
+      "entityType": "columns",
+      "table": "AuditSession"
+    },
+    {
+      "type": "text",
+      "notNull": false,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "finishedAt",
+      "entityType": "columns",
+      "table": "AuditSession"
+    },
+    {
+      "type": "text",
+      "notNull": false,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "key",
+      "entityType": "columns",
+      "table": "QueueSetting"
+    },
+    {
+      "type": "integer",
+      "notNull": true,
+      "autoincrement": false,
+      "default": "1",
+      "generated": null,
+      "name": "concurrency",
+      "entityType": "columns",
+      "table": "QueueSetting"
+    },
+    {
+      "type": "text",
+      "notNull": false,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "id",
+      "entityType": "columns",
+      "table": "SessionFindingReview"
+    },
+    {
+      "type": "text",
+      "notNull": true,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "sessionId",
+      "entityType": "columns",
+      "table": "SessionFindingReview"
+    },
+    {
+      "type": "text",
+      "notNull": true,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "findingKey",
+      "entityType": "columns",
+      "table": "SessionFindingReview"
+    },
+    {
+      "type": "text",
+      "notNull": true,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "action",
+      "entityType": "columns",
+      "table": "SessionFindingReview"
+    },
+    {
+      "type": "text",
+      "notNull": true,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "reviewedAt",
+      "entityType": "columns",
+      "table": "SessionFindingReview"
+    },
+    {
+      "type": "integer",
+      "notNull": false,
+      "autoincrement": true,
+      "default": null,
+      "generated": null,
+      "name": "id",
+      "entityType": "columns",
+      "table": "SessionFinding"
+    },
+    {
+      "type": "integer",
+      "notNull": false,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "duplicateOfId",
+      "entityType": "columns",
+      "table": "SessionFinding"
+    },
+    {
+      "type": "text",
+      "notNull": true,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "sessionId",
+      "entityType": "columns",
+      "table": "SessionFinding"
+    },
+    {
+      "type": "text",
+      "notNull": true,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "status",
+      "entityType": "columns",
+      "table": "SessionFinding"
+    },
+    {
+      "type": "text",
+      "notNull": true,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "title",
+      "entityType": "columns",
+      "table": "SessionFinding"
+    },
+    {
+      "type": "text",
+      "notNull": true,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "description",
+      "entityType": "columns",
+      "table": "SessionFinding"
+    },
+    {
+      "type": "text",
+      "notNull": true,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "rootCause",
+      "entityType": "columns",
+      "table": "SessionFinding"
+    },
+    {
+      "type": "text",
+      "notNull": true,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "severity",
+      "entityType": "columns",
+      "table": "SessionFinding"
+    },
+    {
+      "type": "text",
+      "notNull": true,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "filePath",
+      "entityType": "columns",
+      "table": "SessionFinding"
+    },
+    {
+      "type": "text",
+      "notNull": false,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "impact",
+      "entityType": "columns",
+      "table": "SessionFinding"
+    },
+    {
+      "type": "text",
+      "notNull": false,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "triggerConditions",
+      "entityType": "columns",
+      "table": "SessionFinding"
+    },
+    {
+      "type": "text",
+      "notNull": false,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "triggeredActor",
+      "entityType": "columns",
+      "table": "SessionFinding"
+    },
+    {
+      "type": "text",
+      "notNull": false,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "economicImpact",
+      "entityType": "columns",
+      "table": "SessionFinding"
+    },
+    {
+      "type": "text",
+      "notNull": false,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "confirmationReason",
+      "entityType": "columns",
+      "table": "SessionFinding"
+    },
+    {
+      "type": "text",
+      "notNull": false,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "rejectionReason",
+      "entityType": "columns",
+      "table": "SessionFinding"
+    },
+    {
+      "type": "text",
+      "notNull": false,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "recommendation",
+      "entityType": "columns",
+      "table": "SessionFinding"
+    },
+    {
+      "type": "text",
+      "notNull": false,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "note",
+      "entityType": "columns",
+      "table": "SessionFinding"
+    },
+    {
+      "type": "text",
+      "notNull": false,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "humanStatus",
+      "entityType": "columns",
+      "table": "SessionFinding"
+    },
+    {
+      "type": "text",
+      "notNull": false,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "sourceLocations",
+      "entityType": "columns",
+      "table": "SessionFinding"
+    },
+    {
+      "type": "text",
+      "notNull": true,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "createdAt",
+      "entityType": "columns",
+      "table": "SessionFinding"
+    },
+    {
+      "type": "text",
+      "notNull": true,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "groupId",
+      "entityType": "columns",
+      "table": "SessionGroupMember"
+    },
+    {
+      "type": "text",
+      "notNull": true,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "sessionId",
+      "entityType": "columns",
+      "table": "SessionGroupMember"
+    },
+    {
+      "type": "integer",
+      "notNull": true,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "index",
+      "entityType": "columns",
+      "table": "SessionGroupMember"
+    },
+    {
+      "type": "text",
+      "notNull": true,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "createdAt",
+      "entityType": "columns",
+      "table": "SessionGroupMember"
+    },
+    {
+      "type": "text",
+      "notNull": false,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "id",
+      "entityType": "columns",
+      "table": "SessionGroup"
+    },
+    {
+      "type": "text",
+      "notNull": true,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "name",
+      "entityType": "columns",
+      "table": "SessionGroup"
+    },
+    {
+      "type": "text",
+      "notNull": true,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "createdAt",
+      "entityType": "columns",
+      "table": "SessionGroup"
+    },
+    {
+      "type": "text",
+      "notNull": true,
+      "autoincrement": false,
+      "default": "'high'",
+      "generated": null,
+      "name": "reviewMinSeverity",
+      "entityType": "columns",
+      "table": "SessionGroup"
+    },
+    {
+      "type": "text",
+      "notNull": false,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "id",
+      "entityType": "columns",
+      "table": "SessionQueueItem"
+    },
+    {
+      "type": "text",
+      "notNull": true,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "key",
+      "entityType": "columns",
+      "table": "SessionQueueItem"
+    },
+    {
+      "type": "text",
+      "notNull": true,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "sessionId",
+      "entityType": "columns",
+      "table": "SessionQueueItem"
+    },
+    {
+      "type": "text",
+      "notNull": true,
+      "autoincrement": false,
+      "default": "'queued'",
+      "generated": null,
+      "name": "status",
+      "entityType": "columns",
+      "table": "SessionQueueItem"
+    },
+    {
+      "type": "text",
+      "notNull": false,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "error",
+      "entityType": "columns",
+      "table": "SessionQueueItem"
+    },
+    {
+      "type": "text",
+      "notNull": false,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "claimedAt",
+      "entityType": "columns",
+      "table": "SessionQueueItem"
+    },
+    {
+      "type": "text",
+      "notNull": true,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "createdAt",
+      "entityType": "columns",
+      "table": "SessionQueueItem"
+    },
+    {
+      "type": "text",
+      "notNull": false,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "id",
+      "entityType": "columns",
+      "table": "Upload"
+    },
+    {
+      "type": "text",
+      "notNull": true,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "targetPath",
+      "entityType": "columns",
+      "table": "Upload"
+    },
+    {
+      "type": "text",
+      "notNull": true,
+      "autoincrement": false,
+      "default": "'main-audit'",
+      "generated": null,
+      "name": "workflowId",
+      "entityType": "columns",
+      "table": "Upload"
+    },
+    {
+      "type": "text",
+      "notNull": false,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "projectName",
+      "entityType": "columns",
+      "table": "Upload"
+    },
+    {
+      "type": "text",
+      "notNull": false,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "metadata",
+      "entityType": "columns",
+      "table": "Upload"
+    },
+    {
+      "type": "text",
+      "notNull": false,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "source",
+      "entityType": "columns",
+      "table": "Upload"
+    },
+    {
+      "columns": [
+        "sessionId"
+      ],
+      "tableTo": "AuditSession",
+      "columnsTo": [
+        "id"
+      ],
+      "onUpdate": "CASCADE",
+      "onDelete": "CASCADE",
+      "nameExplicit": false,
+      "name": "fk_SessionFindingReview_sessionId_AuditSession_id_fk",
+      "entityType": "fks",
+      "table": "SessionFindingReview"
+    },
+    {
+      "columns": [
+        "sessionId"
+      ],
+      "tableTo": "AuditSession",
+      "columnsTo": [
+        "id"
+      ],
+      "onUpdate": "CASCADE",
+      "onDelete": "CASCADE",
+      "nameExplicit": false,
+      "name": "fk_SessionFinding_sessionId_AuditSession_id_fk",
+      "entityType": "fks",
+      "table": "SessionFinding"
+    },
+    {
+      "columns": [
+        "groupId"
+      ],
+      "tableTo": "SessionGroup",
+      "columnsTo": [
+        "id"
+      ],
+      "onUpdate": "CASCADE",
+      "onDelete": "CASCADE",
+      "nameExplicit": false,
+      "name": "fk_SessionGroupMember_groupId_SessionGroup_id_fk",
+      "entityType": "fks",
+      "table": "SessionGroupMember"
+    },
+    {
+      "columns": [
+        "sessionId"
+      ],
+      "tableTo": "AuditSession",
+      "columnsTo": [
+        "id"
+      ],
+      "onUpdate": "CASCADE",
+      "onDelete": "CASCADE",
+      "nameExplicit": false,
+      "name": "fk_SessionGroupMember_sessionId_AuditSession_id_fk",
+      "entityType": "fks",
+      "table": "SessionGroupMember"
+    },
+    {
+      "columns": [
+        "id"
+      ],
+      "nameExplicit": false,
+      "name": "AuditSession_pk",
+      "table": "AuditSession",
+      "entityType": "pks"
+    },
+    {
+      "columns": [
+        "key"
+      ],
+      "nameExplicit": false,
+      "name": "QueueSetting_pk",
+      "table": "QueueSetting",
+      "entityType": "pks"
+    },
+    {
+      "columns": [
+        "id"
+      ],
+      "nameExplicit": false,
+      "name": "SessionFindingReview_pk",
+      "table": "SessionFindingReview",
+      "entityType": "pks"
+    },
+    {
+      "columns": [
+        "id"
+      ],
+      "nameExplicit": false,
+      "name": "SessionFinding_pk",
+      "table": "SessionFinding",
+      "entityType": "pks"
+    },
+    {
+      "columns": [
+        "id"
+      ],
+      "nameExplicit": false,
+      "name": "SessionGroup_pk",
+      "table": "SessionGroup",
+      "entityType": "pks"
+    },
+    {
+      "columns": [
+        "id"
+      ],
+      "nameExplicit": false,
+      "name": "SessionQueueItem_pk",
+      "table": "SessionQueueItem",
+      "entityType": "pks"
+    },
+    {
+      "columns": [
+        "id"
+      ],
+      "nameExplicit": false,
+      "name": "Upload_pk",
+      "table": "Upload",
+      "entityType": "pks"
+    },
+    {
+      "columns": [
+        {
+          "value": "agents",
+          "isExpression": false
+        }
+      ],
+      "isUnique": false,
+      "where": null,
+      "origin": "manual",
+      "name": "AuditSession_agents_idx",
+      "entityType": "indexes",
+      "table": "AuditSession"
+    },
+    {
+      "columns": [
+        {
+          "value": "workflowId",
+          "isExpression": false
+        }
+      ],
+      "isUnique": false,
+      "where": null,
+      "origin": "manual",
+      "name": "AuditSession_workflowId_idx",
+      "entityType": "indexes",
+      "table": "AuditSession"
+    },
+    {
+      "columns": [
+        {
+          "value": "createdAt",
+          "isExpression": false
+        }
+      ],
+      "isUnique": false,
+      "where": null,
+      "origin": "manual",
+      "name": "AuditSession_createdAt_idx",
+      "entityType": "indexes",
+      "table": "AuditSession"
+    },
+    {
+      "columns": [
+        {
+          "value": "projectName",
+          "isExpression": false
+        }
+      ],
+      "isUnique": false,
+      "where": null,
+      "origin": "manual",
+      "name": "AuditSession_projectName_idx",
+      "entityType": "indexes",
+      "table": "AuditSession"
+    },
+    {
+      "columns": [
+        {
+          "value": "source",
+          "isExpression": false
+        }
+      ],
+      "isUnique": false,
+      "where": null,
+      "origin": "manual",
+      "name": "AuditSession_source_idx",
+      "entityType": "indexes",
+      "table": "AuditSession"
+    },
+    {
+      "columns": [
+        {
+          "value": "status",
+          "isExpression": false
+        }
+      ],
+      "isUnique": false,
+      "where": null,
+      "origin": "manual",
+      "name": "AuditSession_status_idx",
+      "entityType": "indexes",
+      "table": "AuditSession"
+    },
+    {
+      "columns": [
+        {
+          "value": "findingKey",
+          "isExpression": false
+        }
+      ],
+      "isUnique": false,
+      "where": null,
+      "origin": "manual",
+      "name": "SessionFindingReview_findingKey_idx",
+      "entityType": "indexes",
+      "table": "SessionFindingReview"
+    },
+    {
+      "columns": [
+        {
+          "value": "sessionId",
+          "isExpression": false
+        }
+      ],
+      "isUnique": false,
+      "where": null,
+      "origin": "manual",
+      "name": "SessionFindingReview_sessionId_idx",
+      "entityType": "indexes",
+      "table": "SessionFindingReview"
+    },
+    {
+      "columns": [
+        {
+          "value": "reviewedAt",
+          "isExpression": false
+        }
+      ],
+      "isUnique": false,
+      "where": null,
+      "origin": "manual",
+      "name": "SessionFindingReview_reviewedAt_idx",
+      "entityType": "indexes",
+      "table": "SessionFindingReview"
+    },
+    {
+      "columns": [
+        {
+          "value": "createdAt",
+          "isExpression": false
+        }
+      ],
+      "isUnique": false,
+      "where": null,
+      "origin": "manual",
+      "name": "SessionFinding_createdAt_idx",
+      "entityType": "indexes",
+      "table": "SessionFinding"
+    },
+    {
+      "columns": [
+        {
+          "value": "duplicateOfId",
+          "isExpression": false
+        }
+      ],
+      "isUnique": false,
+      "where": null,
+      "origin": "manual",
+      "name": "SessionFinding_duplicateOfId_idx",
+      "entityType": "indexes",
+      "table": "SessionFinding"
+    },
+    {
+      "columns": [
+        {
+          "value": "status",
+          "isExpression": false
+        }
+      ],
+      "isUnique": false,
+      "where": null,
+      "origin": "manual",
+      "name": "SessionFinding_status_idx",
+      "entityType": "indexes",
+      "table": "SessionFinding"
+    },
+    {
+      "columns": [
+        {
+          "value": "sessionId",
+          "isExpression": false
+        }
+      ],
+      "isUnique": false,
+      "where": null,
+      "origin": "manual",
+      "name": "SessionFinding_sessionId_idx",
+      "entityType": "indexes",
+      "table": "SessionFinding"
+    },
+    {
+      "columns": [
+        {
+          "value": "groupId",
+          "isExpression": false
+        },
+        {
+          "value": "index",
+          "isExpression": false
+        }
+      ],
+      "isUnique": true,
+      "where": null,
+      "origin": "manual",
+      "name": "SessionGroupMember_groupId_index_key",
+      "entityType": "indexes",
+      "table": "SessionGroupMember"
+    },
+    {
+      "columns": [
+        {
+          "value": "sessionId",
+          "isExpression": false
+        }
+      ],
+      "isUnique": false,
+      "where": null,
+      "origin": "manual",
+      "name": "SessionGroupMember_sessionId_idx",
+      "entityType": "indexes",
+      "table": "SessionGroupMember"
+    },
+    {
+      "columns": [
+        {
+          "value": "createdAt",
+          "isExpression": false
+        }
+      ],
+      "isUnique": false,
+      "where": null,
+      "origin": "manual",
+      "name": "SessionGroup_createdAt_idx",
+      "entityType": "indexes",
+      "table": "SessionGroup"
+    },
+    {
+      "columns": [
+        {
+          "value": "sessionId",
+          "isExpression": false
+        }
+      ],
+      "isUnique": true,
+      "where": null,
+      "origin": "manual",
+      "name": "SessionQueueItem_sessionId_unique",
+      "entityType": "indexes",
+      "table": "SessionQueueItem"
+    },
+    {
+      "columns": [
+        {
+          "value": "status",
+          "isExpression": false
+        },
+        {
+          "value": "createdAt",
+          "isExpression": false
+        }
+      ],
+      "isUnique": false,
+      "where": null,
+      "origin": "manual",
+      "name": "SessionQueueItem_status_createdAt_idx",
+      "entityType": "indexes",
+      "table": "SessionQueueItem"
+    },
+    {
+      "columns": [
+        {
+          "value": "key",
+          "isExpression": false
+        },
+        {
+          "value": "createdAt",
+          "isExpression": false
+        }
+      ],
+      "isUnique": false,
+      "where": null,
+      "origin": "manual",
+      "name": "SessionQueueItem_key_createdAt_idx",
+      "entityType": "indexes",
+      "table": "SessionQueueItem"
+    }
+  ],
+  "renames": []
+}

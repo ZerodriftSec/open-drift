@@ -1,0 +1,39 @@
+# dependencies
+node_modules/
+.pnpm-store/
+
+# Next.js / build output
+.next/
+out/
+build/
+dist/
+*.tsbuildinfo
+next-env.d.ts
+
+# local runtime data and generated caches
+.agents/
+.claude/
+.data/
+.openapi-gen/
+.turbo/
+broadcast/
+cache/
+coverage/
+
+# environment files
+.env*
+!.env.example
+!.env.sample
+
+# logs and OS files
+*.log
+npm-debug.log*
+pnpm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.DS_Store
+
+# generated documentation exports
+/docs/*
+!/docs/open-kritt-architecture.md
+!/docs/zerodrift-agent-architecture.md
